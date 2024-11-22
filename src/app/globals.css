@@ -46,4 +46,12 @@ body {
   .botao.vermelho:hover {
     @apply bg-red-600;
   }
+
+  .botao.verde {
+    @apply bg-green-500 text-white;
+  }
+
+  .botao.verde:hover {
+    @apply bg-green-600;
+  }
 }
