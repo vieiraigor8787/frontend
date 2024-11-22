@@ -1,6 +1,9 @@
-import { eventos } from '@/core'
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { eventos } from '@/core'
+import { QRCode } from 'react-qrcode'
 
 export default function PaginaEventos() {
   return (
@@ -18,9 +21,15 @@ export default function PaginaEventos() {
               className="object-cover"
             />
           </div>
-          <div className="flex flex-col flex-1 p-7 gap-5">
+          <div className="flex flex-col items-center flex-1 p-7 gap-5">
             <span className="text-lg font-black">{evento.nome}</span>
-            <p className="flex-1 text-sm text-zinc-400">{evento.descricao}</p>
+            <p className="flex-1 text-sm text-zinc-400 text-center">
+              {evento.descricao}
+            </p>
+            <QRCode
+              value={JSON.stringify({ id: evento.id, senha: evento.senha })}
+              className="w-44 h-44"
+            />
             <div className="flex gap-5">
               <Link
                 href={`/evento/admin/${evento.id}/${evento.senha}`}
